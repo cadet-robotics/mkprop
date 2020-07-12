@@ -1,0 +1,16 @@
+[package]
+name = "mkprop"
+version = "0.1.0"
+authors = ["powerboat9 <powerboat9.gamer@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nom = "5.1.1"
+cesu8 = "1.1.0"
+clap = "2.33.1"
+bimap = "0.4.0"
+
+[profile.release]
+overflow-checks = true

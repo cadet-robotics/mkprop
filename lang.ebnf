@@ -1,0 +1,47 @@
+whitespace_char = "\n" | "\t" | " ";
+
+whitespace = whitespace_char , { whitespace_char };
+
+alpha = "A" | "B" | "C" | "D" | "E" | "F" | "G"
+    | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+    | "O" | "P" | "Q" | "R" | "S" | "T" | "U"
+    | "V" | "W" | "X" | "Y" | "Z" | "a" | "b"
+    | "c" | "d" | "e" | "f" | "g" | "h" | "i"
+    | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+    | "q" | "r" | "s" | "t" | "u" | "v" | "w"
+    | "x" | "y" | "z";
+
+digit = "0" | 1" | "2" | "3" | "4" | "5" | "6"
+    | "7" | "8" | "9";
+
+number = digit , { digit };
+
+identifier_char = alpha | digit | "_" | "-";
+
+identifier = ( identifier_char ) , { identifier_char };
+
+(*
+MAP (name in driver file) (constant name).
+MAP (name in driver file) (constant name) OPT.
+*)
+map_statement = "MAP" , whitespace , identifier , whitespace ,
+    identifier , [ whitespace , "OPT" ] , [ whitespace ] , ".";
+
+(*
+@CLASS (class name).
+*)
+class_statement = "@CLASS" , whitespace , identifier , [ whitespace ] , "."
+
+(*
+DEF (name) (number).
+
+Note: number must be storable in 32 bit signed integer
+*)
+define_statement = "DEF" , whitespace , identifier , whitespace ,
+    number , whitespace , ".";
+
+(* root definitions *)
+
+template = [ whitespace ] , class_statement , [ whitespace ] , { map_statement , [ whitespace ] };
+
+driver_data = [ whitespace ] , { define_statement , [ whitespace ] };
