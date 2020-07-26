@@ -1,4 +1,4 @@
-use nom::lib::std::collections::HashMap;
+use std::collections::HashMap;
 use std::io::Write;
 use cesu8::to_java_cesu8;
 

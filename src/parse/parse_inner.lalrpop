@@ -1,0 +1,15 @@
+use std::str::FromStr;
+
+grammar;
+
+Number: i32 = <s:r"[0-9]+"> => i32::from_str(s).unwrap();
+
+Identifier: String = <s:r"[A-Za-z_-][A-Za-z0-9_-]*"> => String::from(s);
+
+MapStatement: (String, String, bool) = "MAP" <i:Identifier> <o:Identifier> <opt:"OPT"?> => (i, o, opt.is_some());
+
+pub TemplateFile: (String, Vec<(String, String, bool)>) = "@CLASS" <Identifier> <(<MapStatement>)*>;
+
+DefineStatement: (String, i32) = "DEFINE" <Identifier> <Number>;
+
+pub DriverDataFile: Vec<(String, i32)> = <(<DefineStatement>)*>;

@@ -1,2 +1,2 @@
-DEF rightMotor 12.
-DEF abc        15.
+DEFINE leftMotor  12
+DEFINE ab         15

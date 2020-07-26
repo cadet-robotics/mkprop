@@ -1,7 +1,7 @@
-@CLASS FooBarToss.
+@CLASS FooBarToss
 
-MAP leftMotor LEFT_MOTOR.
-MAP rightMotor LEFT_MOTOR.
+MAP leftMotor LEFT_MOT
+MAP rightMotor LEFT_MOTOR
 
-MAP abc FOO.
-MAP abc XYZ.
+MAP abc FOO OPT
+MAP ab XYZ
